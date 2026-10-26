@@ -44,6 +44,8 @@ install.sh, ask me the same questions it asks, then set it up based on my answer
 
 ## Claude Code
 
+https://github.com/user-attachments/assets/19a48c19-010e-4287-97c3-5f6b4ddd5fc0
+
 Type `/snippets`, search, and press Enter on each snippet you want:
 
 ```
@@ -74,6 +76,8 @@ You don't need to write or run tests for this. Just use your logic to double-che
 They switch off after each message.
 
 ## Codex
+
+https://github.com/user-attachments/assets/1289c469-f1f6-43a9-bbd4-2c067c64af05
 
 Type `$snippets:` and pick from the list:
 
