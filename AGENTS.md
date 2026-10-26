@@ -17,9 +17,14 @@ Each harness parses snippet files itself; keep the frontmatter rules
 
 ## Branches
 
+This section is for the maintainer (Alex Galea, ZazenCodes). Anyone else
+working in a clone or fork can ignore it.
+
 - `main`: the project, with no snippets in it.
 - `alex-snippets`: `main` plus Alex's snippets in `snippets/`. `install.sh` copies
-  them from this branch when asked.
+  them from this branch when asked. Alex's live snippets in `~/.config/snippets`
+  are the source of truth; to publish them, copy them into `snippets/` on this branch,
+  commit and push.
 
 Keep the two in sync: make every project change on `main`, and only add or
 edit files in `snippets/` on `alex-snippets`. Never merge `alex-snippets` into
