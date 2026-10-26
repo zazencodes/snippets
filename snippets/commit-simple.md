@@ -1,7 +1,7 @@
 ---
 name: Commit simply
-description: Add and commit with simple messages
+description: Add, commit, push and deploy with simple messages
 placement: append
 order: 100
 ---
-Add and commit the changes with very simple but explanatory commit messages, one short line per distinct batch of changes.
+When you're done, add, commit and push, with one short, plain commit message per logical change. If the project has a deploy step, deploy too.

@@ -1,7 +1,7 @@
 ---
 name: Ask questions
-description: Stop and ask instead of guessing
+description: Ask about real design choices, decide the rest
 placement: append
 order: 40
 ---
-Stop and ask me if you have any questions at any point. Whenever there's an undecided design choice or you're not sure about something, ask me before you continue.
+Ask me about real design decisions and anything you can't learn from the code. Make every other call yourself.

@@ -4,4 +4,4 @@ description: Parallelize and keep contexts clean
 placement: append
 order: 60
 ---
-Use subagents where appropriate to expedite work and keep contexts clean. Run independent tasks in parallel and bring the findings back here to synthesize.
+Hand self-contained work to subagents, in parallel where you can, and give each only the context it needs. Keep this conversation for bringing the results together.

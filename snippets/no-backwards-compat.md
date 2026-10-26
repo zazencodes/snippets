@@ -4,4 +4,4 @@ description: Drop the old way instead of supporting both
 placement: append
 order: 20
 ---
-I do not need backwards compatibility or migrations for this. Drop the old way completely rather than adding complexity to support both.
+Nothing is released and nobody depends on the old behavior. Replace it outright, with no backwards compatibility, migrations or redirects.

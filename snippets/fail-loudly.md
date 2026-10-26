@@ -4,4 +4,4 @@ description: No fallbacks or hidden defaults, one right way
 placement: append
 order: 30
 ---
-No fallbacks or hidden defaults. There should be one right way of doing things, and if the data doesn't look as expected, throw an error and fail loudly.
+Keep one right way to do things, with no fallbacks or hidden defaults. When something isn't as expected, stop with a clear error instead of working around it.
