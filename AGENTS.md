@@ -26,3 +26,20 @@ edit files in `snippets/` on `alex-snippets`. Never merge `alex-snippets` into
 `main`. The `Sync alex-snippets with main` workflow merges `main` into
 `alex-snippets` on every push to `main`; if it fails on a conflict, merge `main`
 into `alex-snippets` by hand and push.
+
+## Changelog
+
+`CHANGELOG.md`. Add an entry under `## [Unreleased]` with every user-facing change, in the subsections `### Breaking Changes`, `### Added`, `### Changed`, `### Fixed`, `### Removed`. Read the section first and append to existing subsections. Released sections (`## [X.Y.Z] - date`) are immutable.
+
+## Testing
+
+Test in a throwaway `HOME` so the real agent configs stay untouched: start a tmux session with `HOME` set to an empty scratch folder and `PATH` including the agent CLIs, then run the curl one-liner (it installs `main` from GitHub) and answer every question.
+
+- Installer: all four agents install, and running it again succeeds.
+- Pi: in that session, `pi`, then `/snippets`, toggle two snippets, send a message; the transcript shows the bodies around it. Without a login the model call fails afterwards, which is fine.
+- OpenCode: `opencode run --print-logs '#plan-first' say hi` in that home, then `opencode export <session>`; the stored user message has the snippet body.
+- Claude Code: `claude plugin test claude-code`.
+
+## Releasing
+
+For versioning, release preparation, publishing, or recovering a failed release, load and follow [.agents/skills/release/SKILL.md](.agents/skills/release/SKILL.md).
