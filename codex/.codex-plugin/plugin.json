@@ -1,0 +1,16 @@
+{
+  "name": "snippets",
+  "version": "0.1.0",
+  "description": "Your prompt snippets from ~/.config/snippets as $ skills you add to a message.",
+  "interface": {
+    "displayName": "Snippets",
+    "shortDescription": "Add prompt snippets to a message with $",
+    "developerName": "ZazenCodes",
+    "category": "Developer Tools"
+  },
+  "author": { "name": "Alex Galea" },
+  "homepage": "https://github.com/zazencodes/snippets",
+  "repository": "https://github.com/zazencodes/snippets",
+  "license": "GPL-3.0",
+  "skills": "./skills/"
+}

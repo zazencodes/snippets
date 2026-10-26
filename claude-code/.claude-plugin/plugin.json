@@ -1,0 +1,9 @@
+{
+  "name": "snippets",
+  "version": "0.1.0",
+  "description": "Toggle small prompt snippets that are added before or after your next message",
+  "author": {
+    "name": "Alex Galea"
+  },
+  "types": "./types/index.d.ts"
+}

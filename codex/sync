@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+"""Turn ~/.config/snippets into the Codex plugin's skills, then reinstall it.
+
+Each snippet becomes an explicit-only skill: hidden from the model's skill
+list, added to a message by typing `$<snippet-id>` in the Codex composer.
+Codex installs a plugin as a copy, so run this after every snippet change.
+"""
+
+import json
+import re
+import shutil
+import subprocess
+from pathlib import Path
+
+SNIPPETS_DIR = Path.home() / ".config" / "snippets"
+SKILLS_DIR = Path(__file__).resolve().parent / "skills"
+FRONTMATTER = re.compile(r"^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$")
+META_LINE = re.compile(r"^([A-Za-z][\w-]*)\s*:\s*(.*)$")
+
+
+def parse_snippet(snippet_id: str, raw: str) -> dict:
+    match = FRONTMATTER.match(raw)
+    if not match:
+        raise SystemExit(f"snippets: {snippet_id} has no frontmatter")
+
+    meta = {}
+    for line in match.group(1).splitlines():
+        kv = META_LINE.match(line)
+        if kv:
+            meta[kv.group(1).lower()] = kv.group(2).strip().strip("\"'")
+
+    placement = meta.get("placement", "append")
+    if placement not in ("prepend", "append"):
+        raise SystemExit(f'snippets: {snippet_id} has placement "{placement}", expected prepend or append')
+    order = meta.get("order")
+    if order is not None and not re.fullmatch(r"-?\d+", order):
+        raise SystemExit(f'snippets: {snippet_id} has order "{order}", expected a whole number')
+    body = match.group(2).strip()
+    if not body:
+        raise SystemExit(f"snippets: {snippet_id} has an empty body")
+
+    stem = re.sub(r"\.md$", "", snippet_id, flags=re.I)
+    return {"skill": stem, "name": meta.get("name") or stem, "description": meta.get("description", ""), "body": body}
+
+
+def write_skill(snippet: dict) -> None:
+    folder = SKILLS_DIR / snippet["skill"]
+    (folder / "agents").mkdir(parents=True)
+    # The model reads a skill's description to decide when to use it; a snippet
+    # is only ever used when typed, so the description is for the $ picker.
+    description = snippet["description"] or snippet["name"]
+    (folder / "SKILL.md").write_text(
+        f"---\nname: {json.dumps(snippet['skill'])}\ndescription: {json.dumps(description)}\n---\n\n{snippet['body']}\n",
+        encoding="utf-8",
+    )
+    (folder / "agents" / "openai.yaml").write_text(
+        "interface:\n"
+        # Codex's $ list mixes snippets in with every other skill; the prefix marks them.
+        f"  display_name: {json.dumps('Snippet: ' + snippet['name'])}\n"
+        f"  short_description: {json.dumps(description)}\n"
+        "policy:\n"
+        "  allow_implicit_invocation: false\n",
+        encoding="utf-8",
+    )
+
+
+def main() -> None:
+    if not SNIPPETS_DIR.is_dir():
+        raise SystemExit(f"snippets: snippet folder {SNIPPETS_DIR} does not exist")
+    snippets = [
+        parse_snippet(path.name, path.read_text(encoding="utf-8"))
+        for path in sorted(SNIPPETS_DIR.iterdir())
+        if path.name.lower().endswith(".md")
+    ]
+
+    shutil.rmtree(SKILLS_DIR, ignore_errors=True)
+    for snippet in snippets:
+        write_skill(snippet)
+    subprocess.run(["codex", "plugin", "add", "snippets@snippets"], check=True)
+    print(f"snippets: {len(snippets)} snippets synced to Codex")
+
+
+if __name__ == "__main__":
+    main()
