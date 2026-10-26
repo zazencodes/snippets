@@ -11,8 +11,9 @@ type Snippet = {
 }
 
 const SNIPPETS_DIR = join(homedir(), '.config', 'snippets')
-// A snippet is added by typing `#<id>` as its own word, e.g. `#no-tests`.
-const MENTION = /(^|\s)#([A-Za-z0-9][\w-]*)(?=\s|$)/g
+// A snippet is added by typing `#<id>` as its own word, e.g. `#no-tests`. Quotes
+// and punctuation may touch it: `opencode run "..."` keeps the quotes in the text.
+const MENTION = /(^|[\s"'(])#([A-Za-z0-9][\w-]*)(?=$|[\s"'.,;:!?)])/g
 
 function parseSnippet(file: string, raw: string): Snippet {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
