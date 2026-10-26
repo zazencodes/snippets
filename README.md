@@ -142,7 +142,11 @@ Or skip the file and ask your agent: "save that as a snippet".
 
 ## License
 
-[GPLv3](LICENSE). Inspired by the `prompt-snippets` extension for Pi in
+[GPLv3](LICENSE).
+
+## Credits
+
+Snippets was inspired by the `prompt-snippets` extension for Pi in
 [amosblomqvist/pi-config](https://github.com/amosblomqvist/pi-config).
 
 <p align="center">
