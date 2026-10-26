@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-26
+
 ### Added
 
 - Added the install script (`curl -fsSL https://raw.githubusercontent.com/zazencodes/snippets/main/install.sh | bash`), which sets up Claude Code, Codex, Pi and OpenCode, can start you with Alex's snippets, and can add the `manage-snippets` skill; run it again to update
