@@ -17,7 +17,7 @@ Each harness parses snippet files itself; keep the frontmatter rules
 
 ## Branches
 
-This section is for the maintainer (Alex Galea, ZazenCodes). Anyone else
+This section is for the maintainer (Alex of ZazenCodes). Anyone else
 working in a clone or fork can ignore it.
 
 - `main`: the project, with no snippets in it.
