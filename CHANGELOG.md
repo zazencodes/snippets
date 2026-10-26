@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added embedded Claude Code and Codex demo videos to the README
+
 ## [0.1.0] - 2026-10-26
 
 ### Added
