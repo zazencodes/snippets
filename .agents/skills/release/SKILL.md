@@ -21,9 +21,10 @@ Run commands from the repo root. A release is a `vX.Y.Z` git tag plus a GitHub r
    scripts/release.sh minor    # breaking changes
    scripts/release.sh 0.1.0    # explicit version, required for the first release
    ```
-   It turns `## [Unreleased]` into `## [X.Y.Z] - YYYY-MM-DD`, sets `X.Y.Z` in the Claude Code, Codex and Pi manifests, commits `Release vX.Y.Z`, tags `vX.Y.Z`, adds a fresh `## [Unreleased]` section, commits `Add [Unreleased] section for next cycle`, pushes `main` and the tag, and runs `gh release create` with that version's changelog section as the notes. The push to `main` also triggers the workflow that merges `main` into `alex-snippets`.
+   It turns `## [Unreleased]` into `## [X.Y.Z] - YYYY-MM-DD`, sets `X.Y.Z` in the Claude Code, Codex and Pi manifests, commits `Release vX.Y.Z`, tags `vX.Y.Z`, adds a fresh `## [Unreleased]` section, commits `Add [Unreleased] section for next cycle`, pushes `main` and the tag, and runs `gh release create` with that version's changelog section as the notes.
 
-5. **Verify** with `gh release view vX.Y.Z`, check that the README's release badge shows the new version, and check that the sync workflow succeeded (`gh run list --limit 1`).
+5. **Sync** `alex-snippets`: merge `main` into it and push.
+6. **Verify** with `gh release view vX.Y.Z` and check that the README's release badge shows the new version.
 
 **If it fails partway**: never rerun the script for a version whose tag was already pushed. If the push succeeded but `gh release create` failed, create the release by hand with that version's `CHANGELOG.md` section as `--notes`. If it failed before the push, delete the local tag (`git tag -d vX.Y.Z`), undo the local release commits with `git reset --keep origin/main`, and rerun.
 

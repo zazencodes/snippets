@@ -28,11 +28,7 @@ working in a clone or fork can ignore it.
 
 Keep the two in sync: make every project change on `main`, and only add or
 edit files in `snippets/` on `alex-snippets`. Never merge `alex-snippets` into
-`main`. The `Sync alex-snippets with main` workflow is meant to merge `main` into
-`alex-snippets` on every push to `main`, but GitHub has not been starting it. So
-after every push to `main`, check `git fetch origin && git merge-base --is-ancestor
-origin/main origin/alex-snippets`; if that fails, merge `main` into
-`alex-snippets` by hand and push.
+`main`. After every push to `main`, merge `main` into `alex-snippets` and push.
 
 ## Changelog
 
