@@ -3,6 +3,7 @@
 Reusable prompt instructions you add to a message in Claude Code, Codex, Pi and OpenCode.
 
 <p align="center">
+  <a href="https://github.com/zazencodes/snippets/releases/latest"><img src="https://img.shields.io/github/v/release/zazencodes/snippets" alt="Latest release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-blue" alt="License: GPLv3"></a>
   <img src="https://img.shields.io/badge/Claude%20Code-ready-D97757?logo=claude&logoColor=white" alt="Claude Code ready">
   <img src="https://img.shields.io/badge/Codex-ready-000000?logo=openai&logoColor=white" alt="Codex ready">
