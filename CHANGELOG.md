@@ -5,6 +5,7 @@
 ### Added
 
 - Added embedded Claude Code and Codex demo videos to the README
+- Added a Credits section to the README linking to amosblomqvist/pi-config, which inspired Snippets
 
 ## [0.1.0] - 2026-10-26
 
