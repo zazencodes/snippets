@@ -11,6 +11,8 @@ Reusable prompt instructions you add to a message in Claude Code, Codex, Pi and 
   <img src="https://img.shields.io/badge/OpenCode-ready-000000?logo=opencode&logoColor=white" alt="OpenCode ready">
 </p>
 
+> **Part of [zstack](https://github.com/zazencodes/zstack)**, the agentic system I use to run ZazenCodes.
+
 You probably type the same few instructions again and again: "make a plan first",
 "don't write tests", "ask me if you're unsure". Save each one as a snippet, then add
 it to a message in a couple of keystrokes.
